@@ -3,11 +3,9 @@ apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
   name: control-vm
-  namespace: travel-control
-  labels:
-    module: m5    
+  namespace: {{ .Values.username }}-travel-control-new
   annotations:
-    argocd.argoproj.io/sync-wave: "2"      
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   dataVolumeTemplates:
     - apiVersion: cdi.kubevirt.io/v1beta1
@@ -32,12 +30,14 @@ spec:
         vm.kubevirt.io/os: fedora
         vm.kubevirt.io/workload: server
         sidecar.istio.io/inject: 'true'
+        istio.io/reroute-virtual-interfaces: "k6t-eth0"
       creationTimestamp: null
       labels:
         kubevirt.io/domain: control-vm
         kubevirt.io/size: small
         app: control-vm
         version: v1
+        sidecar.istio.io/inject: 'true'
     spec:
       architecture: amd64
       domain:
@@ -97,7 +97,7 @@ spec:
                   Label=app=control-container
                   ContainerName=control-container
                   Image=quay.io/kiali/demo_travels_control:v1
-                  Environment=PORTAL_SERVICES='voyages.fr;http://voyages.travel-portal.svc.cluster.local:8000,viaggi.it;http://viaggi.travel-portal.svc.cluster.local:8000,travels.uk;http://travels.travel-portal.svc.cluster.local:8000'
+                  Environment=PORTAL_SERVICES='voyages.fr;http://voyages.{{ .Values.username }}-travel-portal.svc.cluster.local:8000,viaggi.it;http://viaggi.{{ .Values.username }}-travel-portal.svc.cluster.local:8000,travels.uk;http://travels.{{ .Values.username }}-travel-portal.svc.cluster.local:8000'
                   PodmanArgs=-p 8080:8080
 
                   [Install]

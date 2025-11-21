@@ -2,6 +2,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-user: user1
+username: user1
 
 ossm_ingress: ingress-gateway.domain.com

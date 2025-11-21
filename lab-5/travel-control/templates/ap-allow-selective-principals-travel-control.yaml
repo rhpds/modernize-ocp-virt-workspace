@@ -1,12 +1,11 @@
-apiVersion: security.istio.io/v1beta1
+---
+apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
-  name: allow-selective-principals-travel-control
-  namespace: travel-control
-  labels:
-    module: m5    
+  name: allow-selective-principals
+  namespace: {{ .Values.username }}-travel-control-new
   annotations:
-    argocd.argoproj.io/sync-wave: "3"      
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   action: ALLOW
   rules:

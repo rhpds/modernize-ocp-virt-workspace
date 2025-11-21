@@ -1,11 +1,9 @@
 ---
-kind: Route
 apiVersion: route.openshift.io/v1
+kind: Route
 metadata:
   name: travel-control
-  namespace: travel-control
-  labels:
-    module: m5    
+  namespace: {{ .Values.username }}-travel-control-new
   annotations:
     argocd.argoproj.io/sync-wave: "2"      
 spec:
