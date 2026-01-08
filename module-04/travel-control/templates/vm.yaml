@@ -5,7 +5,7 @@ metadata:
   name: control-vm
   namespace: {{ .Values.username }}-travel-control-new
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   dataVolumeTemplates:
     - apiVersion: cdi.kubevirt.io/v1beta1

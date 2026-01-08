@@ -3,6 +3,8 @@ kind: PodMonitor
 metadata:
   name: {{ .Values.username }}-proxies-monitor-travel-control-new
   namespace: {{ .Values.username }}-travel-control-new
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   selector:
     matchExpressions:
