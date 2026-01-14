@@ -43,8 +43,8 @@ echo
 
 # Array of scripts to run in order
 SCRIPTS=(
-    "complete-lab-3.sh"
-    "complete-lab-5.sh"
+    "01-add-services-to-mesh.sh"
+    "03-add-gitops-travel-control.sh"
 )
 
 # Run each script in order
