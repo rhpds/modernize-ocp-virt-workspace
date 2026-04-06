@@ -9,6 +9,9 @@ USERNAME=$(oc whoami)
 
 oc patch VirtualMachine/control-vm --type=merge -p '{"spec":{"template":{"metadata":{"labels":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-control
 oc patch VirtualMachine/control-vm --type=merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-control
+oc patch VirtualMachine/control-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPU": "100m"}}}}}' -n ${USERNAME}-travel-control
+oc patch VirtualMachine/control-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPULimit": "200m"}}}}}' -n ${USERNAME}-travel-control
+oc patch VirtualMachine/control-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyMemoryLimit": "300Mi"}}}}}' -n ${USERNAME}-travel-control
 oc delete pods -l vm.kubevirt.io/name=control-vm -n ${USERNAME}-travel-control
 
 echo

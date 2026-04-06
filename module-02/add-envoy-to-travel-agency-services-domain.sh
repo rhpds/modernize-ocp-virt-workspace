@@ -10,36 +10,58 @@ USERNAME=$(oc whoami)
 # cars-vm
 oc patch VirtualMachine/cars-vm --type merge -p '{"spec":{"template":{"metadata":{"labels":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-agency
 oc patch VirtualMachine/cars-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/cars-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPU": "100m"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/cars-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPULimit": "200m"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/cars-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyMemoryLimit": "300Mi"}}}}}' -n ${USERNAME}-travel-agency
+
 oc delete pods -l vm.kubevirt.io/name=cars-vm -n ${USERNAME}-travel-agency
 
 # discounts-vm
 oc patch VirtualMachine/discounts-vm --type merge -p '{"spec":{"template":{"metadata":{"labels":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-agency
 oc patch VirtualMachine/discounts-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/discounts-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPU": "100m"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/discounts-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPULimit": "200m"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/discounts-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyMemoryLimit": "300Mi"}}}}}' -n ${USERNAME}-travel-agency
 oc delete pods -l vm.kubevirt.io/name=discounts-vm -n ${USERNAME}-travel-agency
 
 # flights-vm
 oc patch VirtualMachine/flights-vm --type merge -p '{"spec":{"template":{"metadata":{"labels":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-agency
 oc patch VirtualMachine/flights-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/flights-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPU": "100m"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/flights-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPULimit": "200m"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/flights-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyMemoryLimit": "300Mi"}}}}}' -n ${USERNAME}-travel-agency
 oc delete pods -l vm.kubevirt.io/name=flights-vm -n ${USERNAME}-travel-agency
 
 # hotels-vm
 oc patch VirtualMachine/hotels-vm --type merge -p '{"spec":{"template":{"metadata":{"labels":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-agency
 oc patch VirtualMachine/hotels-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/hotels-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPU": "100m"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/hotels-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPULimit": "200m"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/hotels-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyMemoryLimit": "300Mi"}}}}}' -n ${USERNAME}-travel-agency
 oc delete pods -l vm.kubevirt.io/name=hotels-vm -n ${USERNAME}-travel-agency
 
 # insurances-vm
 oc patch VirtualMachine/insurances-vm --type merge -p '{"spec":{"template":{"metadata":{"labels":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-agency
 oc patch VirtualMachine/insurances-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/insurances-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPU": "100m"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/insurances-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPULimit": "200m"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/insurances-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyMemoryLimit": "300Mi"}}}}}' -n ${USERNAME}-travel-agency
 oc delete pods -l vm.kubevirt.io/name=insurances-vm -n ${USERNAME}-travel-agency
 
 # mysqldb-vm
 oc patch VirtualMachine/mysqldb-vm --type merge -p '{"spec":{"template":{"metadata":{"labels":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-agency
 oc patch VirtualMachine/mysqldb-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/mysqldb-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPU": "100m"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/mysqldb-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPULimit": "200m"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/mysqldb-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyMemoryLimit": "300Mi"}}}}}' -n ${USERNAME}-travel-agency
 oc delete pods -l vm.kubevirt.io/name=mysqldb-vm -n ${USERNAME}-travel-agency
 
 # travels-vm
 oc patch VirtualMachine/travels-vm --type merge -p '{"spec":{"template":{"metadata":{"labels":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-agency
 oc patch VirtualMachine/travels-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/travels-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPU": "100m"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/travels-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyCPULimit": "200m"}}}}}' -n ${USERNAME}-travel-agency
+oc patch VirtualMachine/travels-vm --type merge -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/proxyMemoryLimit": "300Mi"}}}}}' -n ${USERNAME}-travel-agency
 oc delete pods -l vm.kubevirt.io/name=travels-vm -n ${USERNAME}-travel-agency
 
 echo
