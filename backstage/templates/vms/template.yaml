@@ -1,0 +1,56 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: vms
+  title: VMs
+  description: |
+    Scaffolds a Kubervirt VirtualMachine.
+spec:
+  owner: rhdh
+  type: service
+  parameters:
+    - title: Application Configuration
+      required:
+        - component_id
+      properties:
+        component_id:
+          title: Application Name
+          type: string
+          default: modernize-ocp-virt
+          description: Name of the application and GitLab repository
+  steps:
+    - id: overlay
+      name: Apply Catalog and Pipeline Manifests
+      action: fetch:template
+      input:
+        url: ./skeleton
+        targetPath: .
+        replace: true
+        values:
+          component_id: ${{ parameters.component_id }}
+          owner: ${{ user.entity.metadata.name }}
+          namespace: ${{ user.entity.metadata.name }}-vms
+          gitlab_host: "{{ gitlab_host }}"
+
+    - id: publish
+      name: Publish to GitLab
+      action: publish:gitlab
+      input:
+        repoUrl: "{{ gitlab_host }}?owner=${{ user.entity.metadata.name }}&repo=${{ parameters.component_id }}"
+        repoVisibility: public
+        defaultBranch: main
+
+    - id: register
+      name: Register Component in Catalog
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
+  output:
+    links:
+      - title: GitLab Repository
+        url: ${{ steps['publish'].output.remoteUrl }}
+      - title: Open in Catalog
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}

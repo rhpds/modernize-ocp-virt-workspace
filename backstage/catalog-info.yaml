@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: vms-templates
+  description: Software templates for VMs workshop
+spec:
+  targets:
+    - ./templates/vms/template.yaml
