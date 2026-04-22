@@ -37,7 +37,7 @@ spec:
         sidecar.istio.io/inject: 'true'
         sidecar.istio.io/proxyCPU: 100m
         sidecar.istio.io/proxyCPULimit: 200m
-        sidecar.istio.io/proxyMemoryLimit: 300Mi         
+        sidecar.istio.io/proxyMemoryLimit: 300Mi
         istio.io/reroute-virtual-interfaces: "k6t-eth0"
       creationTimestamp: null
       labels:
