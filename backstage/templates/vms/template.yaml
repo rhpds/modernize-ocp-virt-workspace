@@ -16,8 +16,7 @@ spec:
         component_id:
           title: Application Name
           type: string
-          default: modernize-ocp-virt
-          description: Name of the application and GitLab repository
+          description: "Use your username as the application name (e.g. user-xyz1)"
   steps:
     - id: overlay
       name: Apply Catalog and Pipeline Manifests
